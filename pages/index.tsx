@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React, { useState } from "react";
-import ToDo from "../components/ToDo";
-import TodoForm from "../components/TodoForm";
+import Task from "../components/Task";
+import TaskForm from "../components/TaskForm";
 
 export default function Home() {
   const [tasks, setTasks] = useState([
@@ -48,7 +48,7 @@ export default function Home() {
     </Typography>
       
         {tasks.map((task, index) => (        
-          <ToDo                    
+          <Task                    
             key={index}
             index={index}
             task={task}
@@ -58,7 +58,7 @@ export default function Home() {
         ))}       
 
      
-        <TodoForm addTask={addTask} />
+        <TaskForm addTask={addTask} />
       
     </div>
   );
