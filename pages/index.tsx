@@ -1,19 +1,15 @@
 import { Typography } from "@mui/material";
+import { AnySrvRecord } from "dns";
 import React, { useState } from "react";
 import Task from "../components/Task";
 import TaskForm from "../components/TaskForm";
 
 export default function Home() {
-  const [tasks, setTasks] = useState([
+  const [tasks, setTasks] = useState<any>([
     { text: "Meeting with boss at 10am", isCompleted: false },
     { text: "Quality check on New App", isCompleted: false },
     { text: "Price Negotiation with Victoria Inc.", isCompleted: false },
   ]); 
-  
-  const addTask = (text: any) => {
-    const newTasks = [...tasks, { text }];
-    setTasks(newTasks);
-  };
 
   const completeTask = (index: any) => {
     const newTasks = [...tasks];
@@ -21,11 +17,15 @@ export default function Home() {
     setTasks(newTasks);
   };
 
-  const removeTask = (index:any) => {
+  const addTask = (text: any) => {
+    const newTasks = [...tasks, { text }];
+    setTasks({newTasks});
+  };
+  function removeTask(index: any): void {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
-    setTasks(newTasks);
-  };
+    setTasks({newTasks});
+  }
 
   return (
     <div
