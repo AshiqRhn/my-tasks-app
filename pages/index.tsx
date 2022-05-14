@@ -1,11 +1,10 @@
 import { Typography } from "@mui/material";
-import { AnySrvRecord } from "dns";
 import React, { useState } from "react";
 import Task from "../components/Task";
 import TaskForm from "../components/TaskForm";
 
 export default function Home() {
-  const [tasks, setTasks] = useState<any>([
+  const [tasks, setTasks] = useState([
     { text: "Meeting with boss at 10am", isCompleted: false },
     { text: "Quality check on New App", isCompleted: false },
     { text: "Price Negotiation with Victoria Inc.", isCompleted: false },
@@ -18,13 +17,13 @@ export default function Home() {
   };
 
   const addTask = (text: any) => {
-    const newTasks = [...tasks, { text }];
-    setTasks({newTasks});
+    const newTasks = [...tasks, { text, isCompleted: false}];
+    setTasks(newTasks);
   };
   function removeTask(index: any): void {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
-    setTasks({newTasks});
+    setTasks(newTasks);
   }
 
   return (
@@ -47,7 +46,7 @@ export default function Home() {
       My Tasks Today:
     </Typography>
       
-        {tasks.map((task, index) => (        
+        {tasks?.map((task, index) => (        
           <Task                    
             key={index}
             index={index}

@@ -5,7 +5,7 @@ function TaskForm({ addTask }) {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
+    e?.preventDefault();
     if (!value) return;
     addTask(value);
     setValue("");
